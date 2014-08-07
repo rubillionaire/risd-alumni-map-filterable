@@ -1,1 +1,1 @@
-[RISD Community Mapping Data](http://rubillionaire.github.io/risd-alumni-map-data)
+[RISD Alumni Filterable Map](http://rubillionaire.github.io/risd-alumni-map-filterable)
