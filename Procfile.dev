@@ -1,0 +1,3 @@
+web: node_modules/.bin/serve --port 8886 --cors
+css: npm run watch-css
+js: npm run watch-js

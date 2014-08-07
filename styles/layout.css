@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.half-height {
+    height: 50%;
+}
+.space-bottom {
+    margin-bottom: 10px;
+}
+.block {
+    display: block;
+}
+.upper-left {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    margin: 0px;
+}
+.padded {
+    padding: 20px;
+}
+.col4 {
+    width: 300px;
+}
+.stretch {
+    width: 100%;
+}
+.stretch-v {
+    height: 100%;
+}
+.clean {
+    border: 0;
+}
+.spacious-input {
+    font-size: 1.0em;
+    padding: 10px 0;
+
+    border-bottom: 1px dotted black;
+}

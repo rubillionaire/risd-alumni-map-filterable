@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Filter Alumni Map</title>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+        <link rel='stylesheet' type='text/css' href='dist/site.css' />
+        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+        <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0'>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div class="upper-left clean fill-white drop-shadow">
+            <div class="map-zoom-control stretch-v">
+                <div id="el_map_control_zoom_in" class="half-height"></div>
+                <div id="el_map_control_zoom_out" class="half-height"></div>
+            </div>
+            <fieldset class="col4 padded clean">
+                <span class="icon search"></span>
+                <input id="filter-map-input" class="clean stretch spacious-input" placeholder="Filter: Titles and Industry sector.">
+            </fieldset>
+        </div>
+
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+        <script src='dist/site.js'></script>
+    </body>
+</html>
