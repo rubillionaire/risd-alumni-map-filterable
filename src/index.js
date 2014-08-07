@@ -75,13 +75,9 @@ d3.json(api_url + gist_id, function (gist) {
 
     // filter
     var filter = Filter().input(d3.select('#filter-map-input')).featureLayer(alumni);
-    // end filter
 
     // popup
-    
-
     alumni.eachLayer(bindPopup);
-    // end popup
 
     // map zoom
     // var el_map_control_zoom_in = document.getElementById('map-control-zoom-in');
@@ -89,18 +85,6 @@ d3.json(api_url + gist_id, function (gist) {
 
 });
 
-function popup_structure (sel) {
-    sel.append('p')
-        .attr('class', 'metadata-label')
-        .html(function (d) {
-            return toTitleCase(d.label);
-        });
-    sel.append('p')
-        .attr('class', 'metadata-value')
-        .html(function (d) {
-            return d.value;
-        });
-}
 function toTitleCase(str)
 {
     return str.replace(/\w\S*/g,
@@ -109,16 +93,6 @@ function toTitleCase(str)
                       .toUpperCase() +
                    txt.substr(1).toLowerCase();
         });
-}
-function normalize_key (key) {
-    return key.trim().toLowerCase().replace(/ /g, "-");
-}
-function normalize_value (value) {
-    // temporarily fixing category values that end in +
-    // supposed to be: 50+
-    // entered as: 50 +
-    return value.trim().substr(value.length - 1) === "+" ?
-        value.trim().replace(/ /g, "") : value.trim();
 }
 
 function bindPopup (layer) {
@@ -150,4 +124,17 @@ function bindPopup (layer) {
     var content = build_div.html();
 
     layer.bindPopup(content);
+
+    function popup_structure (sel) {
+        sel.append('p')
+            .attr('class', 'metadata-label')
+            .html(function (d) {
+                return toTitleCase(d.label);
+            });
+        sel.append('p')
+            .attr('class', 'metadata-value')
+            .html(function (d) {
+                return d.value;
+            });
+    }
 }

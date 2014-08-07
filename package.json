@@ -4,9 +4,9 @@
   "description": "Map showcasing RISD Alumni",
   "main": "src/index.js",
   "scripts": {
-    "build-css": "cat styles/mapbox.css styles/fonts.css styles/layout.css styles/modules.css > dist/site.css",
+    "build-css": "cat styles/fonts.css styles/layout.css styles/modules.css > dist/site.css",
         "build-js": "browserify src/index.js -o dist/site.js",
-        "watch-css": "catw styles/mapbox.css styles/fonts.css styles/layout.css styles/modules.css -o dist/site.css",
+        "watch-css": "catw styles/fonts.css styles/layout.css styles/modules.css -o dist/site.css",
         "watch-js": "watchify src/index.js -o dist/site.js -dv",
         "watch": "npm run watch-js & npm run watch-css",
         "build": "npm run build-js & npm run build-css"
