@@ -26,11 +26,15 @@ body {
 .block {
     display: block;
 }
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
 .upper-left {
     position: absolute;
     top: 12px;
     left: 12px;
-    margin: 0px;
+    margin: 0;
 }
 .padded {
     padding: 20px;
@@ -47,11 +51,82 @@ body {
 .clean {
     border: 0;
 }
+.results-output {
+    display: inline-block;
+
+    vertical-align: top;
+    padding-top: 3px;
+    margin: 0;
+
+    font-size: 0.8em;
+    color: rgb(170,170,170);
+
+    transition: color 0.28s ease-in-out;
+}
 .spacious-input {
     font-size: 1.0em;
-    padding: 10px 0;
+    padding: 10px 0 15px 0;
+    width: 232px;  /* (total width) - (icon width) */
+    
+    margin-left: 3px;
 
-    border-bottom: 1px dotted black;
+    display: inline-block;
+    vertical-align: top;
+
+    transition: color 0.28s ease-in-out;
+}
+.dotted-underline {
+    border-bottom: 1px dotted rgb(170,170,170);
+
+    transition: border-bottom 0.28s ease-in-out;
+}
+
+.icon {
+    display: inline-block;
+}
+.icon.search {
+    padding-top: 10px;
+    width: 20px;
+    height: 20px;
+}
+.icon.extent {
+    width: 24px;
+    height: 18px;
+}
+
+
+.search path,
+.extent path {
+    fill: rgb(170,170,170);
+    
+    transition: fill 0.28s ease-in-out;
+}
+.filter-row.active .search path{
+    fill: rgb(10,10,10);
+    
+    transition: fill 0.28s ease-in-out;
+}
+
+.filter-row.active .dotted-underline {
+    border-bottom: 1px dotted rgb(10,10,10);
+
+    transition: border-bottom 0.28s ease-in-out;
+}
+
+
+.hoverable:hover {
+    cursor: pointer;
+}
+
+.hoverable:hover .extent path {
+    fill: rgb(10,10,10);
+
+    transition: fill 0.28s ease-in-out;
+}
+.hoverable:hover .results-output {
+    color: rgb(10,10,10);
+
+    transition: color 0.28s ease-in-out;
 }.leaflet-container .metadata {
     margin-bottom: 20px;
 }

@@ -15,8 +15,36 @@
                 <div id="el_map_control_zoom_out" class="half-height"></div>
             </div>
             <fieldset class="col4 padded clean">
-                <span class="icon search"></span>
-                <input id="filter-map-input" class="clean stretch spacious-input" placeholder="Filter: Titles and Industry sector.">
+                <div id="filter-row" class="stretch dotted-underline filter-row space-bottom">
+                    <span class="icon search">
+                        <svg x="0px" y="0px"
+                             viewBox="20 20 60 60"
+                             enable-background="new 0 0 100 100">
+                        <g>
+                            <path d="M57.281,62.129c-4.16,0.4-8.32-0.721-11.92-3.2l-2.56,8.24l-8.24,9.841c-0.72,0.879-1.76,1.119-2.8,1.199
+                                c-2.56,0.24-4.96-1.92-5.2-4.4c-0.08-1.039,0.08-2.16,0.72-2.959l8.16-9.841l7.76-4c-3.12-3.04-4.88-7.121-5.28-11.201
+                                c-0.8-9.68,6.64-18.32,16.24-19.2c9.601-0.8,18.4,6.56,19.28,16.16c0.4,4.64-0.88,9.281-4,13.041
+                                C66.242,59.568,61.842,61.729,57.281,62.129z M56.722,55.328c5.84-0.56,10.4-5.92,9.84-12c-0.479-5.84-6-10.4-11.76-9.84
+                                c-6,0.48-10.48,5.92-10,11.76c0.24,2.88,1.52,5.6,3.84,7.52C51.041,54.688,53.922,55.568,56.722,55.328z"/>
+                        </g>
+                        </svg>
+                    </span>
+                    <input id="filter-map-input" class="clean stretch spacious-input inline align-top" placeholder="Titles and Industry sector.">
+                </div>
+                <div id="results-row" class="hoverable">
+                    <span class="icon extent">
+                        <svg x="0px" y="0px"
+                             viewBox="15 17 90 70"
+                             enable-background="new 0 0 100 100">
+                        <g>
+                            <path d="M31.161,38.928l-5.68,5.84v-16.48h16.48l-5.68,5.68l9.041,9.04l-5.2,5.04L31.161,38.928z M45.321,62.209l-9.041,8.88
+                                l5.68,5.681H25.48v-16.4l5.68,5.68l8.96-9.04L45.321,62.209z M54.201,43.008l9.04-9.04l-5.68-5.68h16.48v16.48l-5.681-5.68
+                                l-9.04,8.96L54.201,43.008z M74.042,60.369v16.4h-16.48l5.68-5.681l-9.04-8.88l5.12-5.2l9.04,9.04L74.042,60.369z"/>
+                        </g>
+                        </svg>
+                    </span>
+                    <p id="results-output" class="results-output"></p>
+                </div>
             </fieldset>
         </div>
 

@@ -9,12 +9,20 @@ var Filter = function () {
     var selection_input;
     var filter_string;
     var featureLayer;
+    var feature_count = 0;
 
     var self = function () {
+        self.dispatch.filterStartCount(feature_count);
+        feature_count = 0;
+
         filter_string = selection_input.property('value').toLowerCase();
         featureLayer.setFilter(show_title_industry);
         featureLayer.eachLayer(bindPopup);
+
+        self.dispatch.filterEndCount(feature_count);
     };
+
+    self.dispatch = d3.dispatch('filterStartCount', 'filterEndCount');
 
     self.input = function (x) {
         if (!arguments.length) return selection_input;
@@ -37,6 +45,7 @@ var Filter = function () {
                     .toLowerCase()
                     .indexOf(filter_string) !== -1) {
                 bool = true;
+                feature_count += 1;
                 return bool;
             }
             if ("title" in feature.properties &
@@ -44,6 +53,7 @@ var Filter = function () {
                     .toLowerCase()
                     .indexOf(filter_string) !== -1) {
                 bool = true;
+                feature_count += 1;
                 return bool;
             }
         } catch (error) {
@@ -74,19 +84,39 @@ d3.json(api_url + gist_id, function (gist) {
     alumni.addTo(map);
 
     // filter
+    var el_filter_results_output = document.getElementById('results-output');
     var filter = Filter().input(d3.select('#filter-map-input')).featureLayer(alumni);
 
-    // popup
-    alumni.eachLayer(bindPopup);
+    filter.dispatch.on('filterEndCount', function (count) {
+        if (count === 0) {
+            el_filter_results_output.innerHTML = " No businesses.";
+        } else {
+            el_filter_results_output.innerHTML = count + " businesses.";
+        }
+    });
 
-    // map zoom
-    // var el_map_control_zoom_in = document.getElementById('map-control-zoom-in');
-    // var el_map_control_zoom_out = document.getElementById('map-control-zoom-out');
+    // initial filter
+    filter();
+
+    // zoom to extents
+    var el_results_row = document.getElementById('results-row');
+    el_results_row.onclick = function () {
+        map.fitBounds(alumni.getBounds());
+    };
 
 });
 
-function toTitleCase(str)
-{
+// interaction with input
+var el_filter_row = d3.select('#filter-row');
+var el_input = document.getElementById('filter-map-input');
+el_input.onfocus = function () {
+    el_filter_row.classed('active', true);
+}
+el_input.onblur = function () {
+    el_filter_row.classed('active', false);
+}
+
+function toTitleCase(str) {
     return str.replace(/\w\S*/g,
         function(txt){
             return txt.charAt(0)
