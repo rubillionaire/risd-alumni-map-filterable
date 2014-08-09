@@ -69,6 +69,8 @@ body {
     display: inline-block;
     vertical-align: top;
 
+    color: rgb(170, 170, 170);
+
     transition: color 0.28s ease-in-out;
 }
 .dotted-underline {
@@ -107,6 +109,12 @@ body {
     border-bottom: 1px dotted rgb(10,10,10);
 
     transition: border-bottom 0.28s ease-in-out;
+}
+
+.filter-row.active .spacious-input {
+    color: rgb(10,10,10);
+
+    transition: color 0.28s ease-in-out;
 }
 
 
