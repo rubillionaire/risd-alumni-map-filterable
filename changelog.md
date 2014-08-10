@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.0.1 - 2014-08-10
+
+### Added
+
+- Nothing
+
+### Deprecated
+
+- Nothing
+
+### Removed
+
+- Nothing
+
+### Fixed
+
+- If there is no hash query on the url, it should just load the default values. Was previously choking on not having a hash url to format.
+
 ## 1.0.0 - 2014-08-09
 
 ### Added

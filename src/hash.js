@@ -44,8 +44,10 @@ module.exports = function Hash () {
         if (movingMap) return false;
 
         var hash = self.parseHash(location.hash);
-        selection_input.property('value', deslugify(hash.query));
-        lastHash = self.formatHash(map);
+        if (hash) {
+            selection_input.property('value', deslugify(hash.query));
+            lastHash = self.formatHash(map);
+        }
     };
 
     self.onMapMove = function () {
