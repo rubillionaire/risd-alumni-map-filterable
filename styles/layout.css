@@ -54,9 +54,6 @@ body {
     padding-top: 3px;
     margin: 0;
 
-    font-size: 0.8em;
-    color: rgb(170,170,170);
-
     transition: color 0.28s ease-in-out;
 }
 .spacious-input {
@@ -91,10 +88,18 @@ body {
     width: 24px;
     height: 18px;
 }
+.icon.arrow {
+    width: 15px;
+    height: 12px;
+
+    margin-left: 6px;
+    margin-right: 8px;
+}
 
 
 .search path,
-.extent path {
+.extent path,
+.muted .icon path {
     fill: rgb(170,170,170);
     
     transition: fill 0.28s ease-in-out;
@@ -122,13 +127,47 @@ body {
     cursor: pointer;
 }
 
-.hoverable:hover .extent path {
+.hoverable:hover .extent path,
+.hoverable:hover.muted path {
     fill: rgb(10,10,10);
 
     transition: fill 0.28s ease-in-out;
 }
-.hoverable:hover .results-output {
+.hoverable:hover .results-output,
+.hoverable:hover.muted {
     color: rgb(10,10,10);
 
     transition: color 0.28s ease-in-out;
+}
+
+.industry-sector-list-item {
+    margin-bottom: 10px;
+}
+
+.hoverable.industry-sector-list-item:hover {
+    color: rgb(10,10,10);
+
+    transition: color 0.28s ease-in-out;
+}
+
+.list-heading {
+    margin-top: 0;
+    vertical-align: top;
+}
+
+/*.industry-sectors {
+    max-height: 400px;
+    overflow: hidden;
+}*/
+.industry-sectors-list {
+    max-height: 300px;
+    overflow: scroll;
+    display: none;
+}
+.state-open .industry-sectors-list {
+    display: block;
+}
+
+.industry-sectors.state-open svg {
+    transform: rotate(180deg);
 }

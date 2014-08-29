@@ -22,6 +22,7 @@ module.exports = function Hash () {
         if (!isListening) {
             startListening();
         }
+        return self;
     };
 
     self.input = function(x) {
@@ -38,6 +39,7 @@ module.exports = function Hash () {
             stopListening();
         }
         map = null;
+        return self;
     };
 
     self.initializeMapAndInput = function () {
@@ -48,6 +50,7 @@ module.exports = function Hash () {
             selection_input.property('value', deslugify(hash.query));
             lastHash = self.formatHash(map);
         }
+        return self;
     };
 
     self.onMapMove = function () {
@@ -60,6 +63,7 @@ module.exports = function Hash () {
             location.replace(hash);
             lastHash = hash;
         }
+        return self;
     };
 
     self.onInputChange = function () {
@@ -68,6 +72,7 @@ module.exports = function Hash () {
             location.replace(hash);
             lastHash = hash;
         }
+        return self;
     };
 
     self.update = function () {
@@ -84,6 +89,7 @@ module.exports = function Hash () {
             self.onMapMove(map);
             
         }
+        return self;
     };
 
     self.onHashChange = function () {
@@ -93,6 +99,7 @@ module.exports = function Hash () {
                 changeTimeout = null;
             }, changeDefer);
         }
+        return self;
     };
 
     self.parseHash = function (hash) {
@@ -151,10 +158,10 @@ module.exports = function Hash () {
     }
 
     function slugify (str) {
-        return str.replace(/ /g, "-");
+        return str.replace(/ /g, "-").replace(/\//g, "--");
     }
     function deslugify (slug) {
-        return slug.replace(/-/g, " ");
+        return slug.replace(/--/g, "/").replace(/-/g, " ");
     }
 
     return self;

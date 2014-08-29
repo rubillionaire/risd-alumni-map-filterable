@@ -39,6 +39,11 @@ module.exports = function Filter () {
         featureLayer = x;
         return self;
     };
+    self.setFilterValue = function (x) {
+        if (!arguments.length) return;
+        selection_input.property('value', x);
+        return self;
+    };
 
     function show_title_industry(feature) {
         var bool = false;
