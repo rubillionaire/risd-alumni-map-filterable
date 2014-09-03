@@ -3,3 +3,8 @@ body {
     font-size: 16px;
     font-weight: 300;
 }
+
+.muted {
+    font-size: 0.8em;
+    color: rgb(170,170,170);
+}

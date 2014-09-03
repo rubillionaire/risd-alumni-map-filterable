@@ -15,7 +15,8 @@ var map = L.mapbox.map('map', 'community-risd.i87e2i5o')
 // hash setting/watching based on
 // the map movement, and keyup
 // on the input selection
-Hash.input(d3.select('#filter-map-input'))(map);
+var hash = Hash.input(d3.select('#filter-map-input'));
+hash(map);
 
 d3.json(api_url + gist_id, function (gist) {
     var geojson = JSON.parse(gist.files['map.geojson'].content);
@@ -48,11 +49,48 @@ d3.json(api_url + gist_id, function (gist) {
         map.fitBounds(alumni.getBounds());
     };
 
+    // list of industry sectors
+    var el_industry_sectors_list = document.getElementById('industry-sectors-list');
+    var sectors = [];
+    geojson.features.forEach(function(d ,i) {
+        var sector = d.properties['Industry sector'];
+        if (typeof sector != 'undefined' &
+            sector !== '' &
+            sectors.indexOf(sector)  === -1) {
+            if (sector.trim()) {
+                sectors.push(sector.trim());
+            }
+        }
+    });
+    var sorted_sectors = sectors.sort();
+
+    d3.select(el_industry_sectors_list)
+        .selectAll('.industry-sector-list-item')
+        .data(sorted_sectors)
+        .enter()
+        .append('li')
+        .attr('class', 'industry-sector-list-item hoverable muted')
+        .on('click', function (d) {
+            filter.setFilterValue(d)();
+            hash.onInputChange();
+        })
+        .append('p')
+        .text(function (d) { return d; });
+
+    // UI for hiding/showing list
+    var toggleSectors = d3.select('#industry-sectors-header')
+        .on('click', function () {
+            var parent = d3.select(d3.select(this).node().parentNode);
+            var opened = parent.classed('state-open');
+            parent.classed('state-open', opened ? false : true);
+        });
+    // end list of industry sectors
 });
 
 // interaction with input
 var el_filter_row = d3.select('#filter-row');
 var el_input = document.getElementById('filter-map-input');
+
 el_input.onfocus = function () {
     el_filter_row.classed('active', true);
 };
