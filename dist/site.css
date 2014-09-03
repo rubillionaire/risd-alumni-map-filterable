@@ -178,6 +178,10 @@ body {
 }
 
 .industry-sectors.state-open svg {
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }.leaflet-container .metadata {
     margin-bottom: 20px;
