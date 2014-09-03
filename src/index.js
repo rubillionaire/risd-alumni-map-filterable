@@ -55,9 +55,9 @@ d3.json(api_url + gist_id, function (gist) {
     geojson.features.forEach(function(d ,i) {
         var sector = d.properties['Industry sector'];
         if (typeof sector != 'undefined' &
-            sector !== '' &
-            sectors.indexOf(sector)  === -1) {
-            if (sector.trim()) {
+            sector !== '') {
+
+            if (sectors.indexOf(sector.trim())  === -1) {
                 sectors.push(sector.trim());
             }
         }
